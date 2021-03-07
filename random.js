@@ -3,7 +3,7 @@ const saveTheCanvas = document.getElementById('saveCanvas')
 
 
 function setup() {
-  let c = createCanvas(300, 300);
+  let c = createCanvas(400, 400);
   c.addClass("canvas-background");
 
   saveTheCanvas.addEventListener('click', function (event) {
@@ -18,24 +18,28 @@ function drawElementsOnCanvas (data) {
   function draw() {
     background(0);
     noStroke();
-     const dataLength = data.length
+    const dataLength = data.length
     for (let index = 0; index < dataLength; (index+=3) % dataLength ) {
+
       let first = data[index]
       let second = data[index+1]
       let third = data[index+2]
+
+      const randColor = (first+second+third)*(Math.random()*10) % 255
+      const largerPseudoNumber = Math.random() * 1000
       
-      fill(first, second, third, (first+second+third)*(Math.random()*10) % 255)
-      arc((first+Math.random() * 1000) % 100, (second+Math.random() *1000) % 100, third, (first+second+third)*(Math.random()*10) % 100,  0, HALF_PI)
+      fill(first, second, third, randColor)
+      arc((first+largerPseudoNumber) % 100, (second+largerPseudoNumber) % 100, third, (first+second+third)*(Math.random()*10) % 100,  0, HALF_PI)
       rotate(PI / first);
       
       triangle(first, second, third, first, third, second);
-      fill(second, first, third, (first+second+third)*(Math.random()*10) % 255)
+      fill(second, first, third, randColor)
       rotate(PI / second);
 
-      fill(third, second, first, (first+second+third)*(Math.random()*10) % 255)
-      circle((first+Math.random() * 1000) % 300, (second+Math.random() *1000) % 300, third)
+      fill(third, second, first, randColor)
+      circle((first+largerPseudoNumber) % 400, (second+largerPseudoNumber) % 400, third)
       
-      fill(first, first, third, (first+second+third)*(Math.random()*10) % 255)
+      fill(first, first, third, randColor)
       square(third, second, first)
       rotate(PI / third);
     }
