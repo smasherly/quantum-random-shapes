@@ -34,7 +34,7 @@ button {
   padding-bottom: 10px;
 }
 
-.main-background {
+.top-section-background {
   width: 400px;
   text-align: center;
   color: white;
@@ -57,4 +57,11 @@ button {
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 767px) {
+  body {
+    background-image: none;
+    background-color: gray;
+  }
 }
